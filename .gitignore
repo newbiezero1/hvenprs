@@ -1,2 +1,4 @@
 config.py
 files/ub_trades.json
+.venv
+workspace.xml
