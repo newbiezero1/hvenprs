@@ -1,0 +1,24 @@
+# Discord access
+discord_token = '<token>'
+
+# discord bheem chanels for lister
+traders_channels = {'ub': '<id>>',}
+
+# stored reading messages
+files_list = {'ub_trades': 'files/ub_trades.json',}
+
+# tg bot key
+tg_api_key = '<apikey>'
+# users for work
+users = {
+    'admin': {
+        'name': '<name>',
+        'is_admin': True,
+        'tg_chat_id': <id>,
+        'autotrade_enabled': True,
+        'bybit_api_key': '<apikey>',
+        'bybit_api_secret': '<secret>',
+        'trade_risk_in_proc': 0.05,
+    },
+}
+
