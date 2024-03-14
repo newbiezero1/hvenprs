@@ -1,4 +1,4 @@
-import json
+import time
 
 import config
 from discord_client import DiscordClient
@@ -46,6 +46,7 @@ def check_trades(trader: str):
                 notifyer.broken_message(new_message['content'])
 
 
+time.sleep(10)
 client = DiscordClient(config.discord_token)
 # trade section
 check_trades('ub')
