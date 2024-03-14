@@ -64,6 +64,16 @@ class Notifyer:
                     Result: *{order["result"]}*'''.replace("    ", "")
         self.send_message(message, silence=True)
 
+    def lost_sl(self, trade_info: dict, origin_message: str) -> None:
+        message = f'''Parse trade without SL and saved: 
+            PAIR: *{trade_info["pair"]}*
+            SIDE: *{trade_info["side"]}*
+            ENTRY: *{trade_info["entry"]}*
+            ===
+            Original message:
+            {origin_message}'''.replace("    ", "")
+        self.send_message(message, silence=True)
+
     def broken_message(self, message: str) -> None:
         message = f'''*Can't parse message:*\n {message}'''
         self.send_message(message)

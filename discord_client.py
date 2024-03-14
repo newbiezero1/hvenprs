@@ -9,7 +9,7 @@ class DiscordClient:
         self.api_point = "https://discord.com/api/v9/"
         self.headers = {"Authorization": auth_token}
 
-    def fetch_messages(self, channel_id: int, message_limit: int = 50) -> list:
+    def fetch_messages(self, channel_id: int, message_limit: int = 10) -> list:
         response = requests.get(f'{self.api_point}/channels/{channel_id}/messages?limit={message_limit}',
                                 headers=self.headers)
         if response.ok:

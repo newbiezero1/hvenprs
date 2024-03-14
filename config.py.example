@@ -5,7 +5,7 @@ discord_token = '<token>'
 traders_channels = {'ub': '<id>>',}
 
 # stored reading messages
-files_list = {'ub_trades': 'files/ub_trades.json',}
+files_list = {'ub': 'files/ub_trades.json',}
 
 # tg bot key
 tg_api_key = '<apikey>'
