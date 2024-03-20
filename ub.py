@@ -8,6 +8,8 @@ class UbParser:
             'side': '',
             'entry': [],
             'sl': '',
+            'tp1': '',
+            'tp2': '',
             'tp': '',
             'risk': 1.0,
         }
@@ -25,6 +27,7 @@ class UbParser:
             pair = pair.replace('1000','')
             pair = pair + '1000'
             return pair
+        return pair
 
     def find_pair(self, line: str) -> None:
         """find pair in line and save to data"""
@@ -34,7 +37,7 @@ class UbParser:
             data = line.split("/")
             self.trade["pair"] = self.format_pair(data[0].replace('*', '').lower())
             return
-        if line.lower().find('- long'):
+        if line.lower().find('- long') >= 0:
             data = line.split(" ")
             self.trade["pair"] = self.format_pair(data[0].lower())
 
@@ -81,6 +84,14 @@ class UbParser:
     def find_tp(self, line: str) -> None:
         """find tp point in line and save to data"""
         """example: TP: 2415.2"""
+        if line.lower().find("tp1") >= 0:
+            data = line.lower().split("tp1:")
+            self.trade["tp1"] = data[1].split(' ')[0].strip()
+            return
+        if line.lower().find("tp2") >= 0:
+            data = line.lower().split("tp2:")
+            self.trade["tp2"] = data[1].split(' ')[0].strip()
+            return
         if line.lower().find("tp3") >= 0:
             data = line.lower().split("tp3:")
             if data[1].strip().lower().find('tbd') >=0:
@@ -105,6 +116,10 @@ class UbParser:
                 self.find_entry(line)
             if not self.trade['sl']:
                 self.find_sl(line)
+            if not self.trade['tp1']:
+                self.find_tp(line)
+            if not self.trade['tp2']:
+                self.find_tp(line)
             if not self.trade['tp']:
                 self.find_tp(line)
 
